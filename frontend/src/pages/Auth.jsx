@@ -2,7 +2,7 @@
  * Authentication page (Login/Signup)
  */
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../contexts/AuthContext';
 import './Auth.css';
@@ -82,6 +82,14 @@ export default function Auth() {
                 autoComplete={isLogin ? 'current-password' : 'new-password'}
               />
             </div>
+
+            {isLogin && (
+              <div style={{ textAlign: 'right', marginBottom: '1rem' }}>
+                <Link to="/forgot-password" className="btn-link">
+                  {t('auth.forgotPassword')}
+                </Link>
+              </div>
+            )}
 
             <button
               type="submit"

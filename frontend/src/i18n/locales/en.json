@@ -19,7 +19,19 @@
     "noAccount": "Don't have an account?",
     "hasAccount": "Already have an account?",
     "loginError": "Login error",
-    "signupError": "Signup error"
+    "signupError": "Signup error",
+    "forgotPassword": "Forgot Password?",
+    "forgotPasswordDescription": "Enter your email address and we'll send you a link to reset your password.",
+    "sendResetLink": "Send Reset Link",
+    "backToLogin": "Back to Login",
+    "resetPassword": "Reset Password",
+    "resetPasswordDescription": "Enter your new password below.",
+    "newPassword": "New Password",
+    "confirmPassword": "Confirm Password",
+    "resetPasswordButton": "Reset Password",
+    "passwordsDoNotMatch": "Passwords do not match",
+    "passwordTooShort": "Password must be at least 6 characters",
+    "invalidResetToken": "Invalid or missing reset token"
   },
   "home": {
     "welcome": "Generate Your Harvard CV",

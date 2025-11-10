@@ -45,6 +45,15 @@ export const authAPI = {
 
   login: (email, password) =>
     api.post('/auth/login', { email, password }),
+
+  logout: () =>
+    api.post('/auth/logout'),
+
+  requestPasswordReset: (email) =>
+    api.post('/auth/password-reset-request', { email }),
+
+  resetPassword: (token, new_password) =>
+    api.post('/auth/password-reset', { token, new_password }),
 };
 
 // Profile API

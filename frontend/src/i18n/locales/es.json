@@ -19,7 +19,19 @@
     "noAccount": "¿No tienes cuenta?",
     "hasAccount": "¿Ya tienes cuenta?",
     "loginError": "Error al iniciar sesión",
-    "signupError": "Error al registrarse"
+    "signupError": "Error al registrarse",
+    "forgotPassword": "¿Olvidaste tu contraseña?",
+    "forgotPasswordDescription": "Ingresa tu correo electrónico y te enviaremos un enlace para restablecer tu contraseña.",
+    "sendResetLink": "Enviar Enlace",
+    "backToLogin": "Volver al inicio de sesión",
+    "resetPassword": "Restablecer Contraseña",
+    "resetPasswordDescription": "Ingresa tu nueva contraseña a continuación.",
+    "newPassword": "Nueva Contraseña",
+    "confirmPassword": "Confirmar Contraseña",
+    "resetPasswordButton": "Restablecer Contraseña",
+    "passwordsDoNotMatch": "Las contraseñas no coinciden",
+    "passwordTooShort": "La contraseña debe tener al menos 6 caracteres",
+    "invalidResetToken": "Token de restablecimiento inválido o faltante"
   },
   "home": {
     "welcome": "Genera tu CV Harvard",
