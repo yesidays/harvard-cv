@@ -95,11 +95,9 @@ export const skillsAPI = {
   delete: () => api.delete('/skills'),
 };
 
-// CV Export API
+// CV Data API
 export const cvAPI = {
-  preview: () => api.get('/cv/preview'),
-  exportPDF: () => api.get('/cv/export/pdf', { responseType: 'blob' }),
-  exportDOCX: () => api.get('/cv/export/docx', { responseType: 'blob' }),
+  getData: () => api.get('/cv/data'),
 };
 
 export default api;

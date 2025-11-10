@@ -1,13 +1,11 @@
-"""CV export endpoints (preview, PDF, DOCX)."""
+"""CV data endpoints for frontend rendering."""
 from fastapi import APIRouter, Depends, HTTPException, status
-from fastapi.responses import Response, StreamingResponse
 from sqlalchemy.orm import Session
 from ..core.database import get_db
 from ..models import User, Profile
-from ..services.cv_generator import cv_generator
 from .dependencies import get_current_user
 
-router = APIRouter(prefix="/cv", tags=["cv-export"])
+router = APIRouter(prefix="/cv", tags=["cv-data"])
 
 
 def get_user_cv_data(user: User, db: Session) -> dict:
@@ -85,49 +83,11 @@ def get_user_cv_data(user: User, db: Session) -> dict:
     return cv_data
 
 
-@router.get("/preview")
-def preview_cv(
+@router.get("/data")
+def get_cv_data(
     current_user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
-    """Generate HTML preview of CV."""
+    """Get complete CV data in JSON format for frontend rendering and export."""
     cv_data = get_user_cv_data(current_user, db)
-    html_content = cv_generator.generate_html(cv_data)
-
-    return Response(content=html_content, media_type="text/html")
-
-
-@router.get("/export/pdf")
-def export_pdf(
-    current_user: User = Depends(get_current_user),
-    db: Session = Depends(get_db),
-):
-    """Export CV as PDF."""
-    cv_data = get_user_cv_data(current_user, db)
-    pdf_bytes = cv_generator.generate_pdf(cv_data)
-
-    filename = cv_generator.get_filename(cv_data["profile"], "pdf")
-
-    return Response(
-        content=pdf_bytes,
-        media_type="application/pdf",
-        headers={"Content-Disposition": f'attachment; filename="{filename}"'},
-    )
-
-
-@router.get("/export/docx")
-def export_docx(
-    current_user: User = Depends(get_current_user),
-    db: Session = Depends(get_db),
-):
-    """Export CV as DOCX."""
-    cv_data = get_user_cv_data(current_user, db)
-    docx_bytes = cv_generator.generate_docx(cv_data)
-
-    filename = cv_generator.get_filename(cv_data["profile"], "docx")
-
-    return StreamingResponse(
-        docx_bytes,
-        media_type="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-        headers={"Content-Disposition": f'attachment; filename="{filename}"'},
-    )
+    return cv_data

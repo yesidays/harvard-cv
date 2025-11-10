@@ -67,3 +67,27 @@
     padding: var(--spacing-lg);
   }
 }
+
+/* Print styles */
+@media print {
+  .no-print,
+  .preview-header {
+    display: none !important;
+  }
+
+  .preview-page {
+    background: white;
+  }
+
+  .preview-container {
+    padding: 0;
+  }
+
+  .preview-frame {
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0;
+    max-width: 100%;
+  }
+}
