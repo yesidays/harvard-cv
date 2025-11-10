@@ -1,0 +1,195 @@
+/**
+ * Harvard CV Template Styles
+ * Professional typography and spacing following Harvard CV format
+ */
+
+.cv-template {
+  max-width: 8.5in;
+  margin: 0 auto;
+  padding: 1.9cm;
+  background: white;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 11pt;
+  line-height: 1.4;
+  color: #000;
+}
+
+/* Header */
+.cv-header {
+  text-align: center;
+  margin-bottom: 1.5em;
+  border-bottom: 1px solid #000;
+  padding-bottom: 0.5em;
+}
+
+.cv-name {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 24pt;
+  font-weight: bold;
+  margin: 0 0 0.3em 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.cv-contact {
+  font-size: 10pt;
+  color: #333;
+}
+
+.cv-contact a {
+  color: #000;
+  text-decoration: none;
+}
+
+.cv-contact a:hover {
+  text-decoration: underline;
+}
+
+/* Sections */
+.cv-section {
+  margin-bottom: 1.5em;
+}
+
+.cv-section-title {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 13pt;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin: 0 0 0.6em 0;
+  padding-bottom: 0.2em;
+  border-bottom: 1px solid #000;
+  letter-spacing: 0.5px;
+}
+
+/* Summary */
+.cv-summary {
+  margin: 0 0 1em 0;
+  text-align: justify;
+}
+
+/* Entries */
+.cv-entry {
+  margin-bottom: 1.2em;
+}
+
+.cv-entry-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.2em;
+}
+
+.cv-entry-left {
+  flex: 1;
+}
+
+.cv-entry-right {
+  text-align: right;
+  white-space: nowrap;
+  margin-left: 1em;
+  font-style: italic;
+  color: #333;
+}
+
+.cv-location {
+  font-weight: normal;
+  color: #333;
+}
+
+.cv-degree,
+.cv-role {
+  font-style: italic;
+  margin-bottom: 0.3em;
+}
+
+/* Bullets */
+.cv-bullets {
+  margin: 0.5em 0 0 1.2em;
+  padding: 0;
+  list-style-type: disc;
+}
+
+.cv-bullets li {
+  margin-bottom: 0.3em;
+  line-height: 1.3;
+}
+
+/* Projects */
+.cv-impact {
+  margin: 0.3em 0;
+}
+
+.cv-technologies {
+  margin: 0.3em 0;
+  font-size: 10pt;
+  color: #333;
+}
+
+.cv-project-url {
+  margin: 0.3em 0;
+  font-size: 10pt;
+}
+
+.cv-project-url a {
+  color: #0066cc;
+  text-decoration: none;
+}
+
+.cv-project-url a:hover {
+  text-decoration: underline;
+}
+
+/* Certifications */
+.cv-credential {
+  font-size: 10pt;
+  color: #555;
+  margin: 0.2em 0;
+}
+
+.cv-cert-url {
+  font-size: 10pt;
+  margin: 0.2em 0;
+}
+
+.cv-cert-url a {
+  color: #0066cc;
+  text-decoration: none;
+}
+
+.cv-cert-url a:hover {
+  text-decoration: underline;
+}
+
+/* Skills */
+.cv-skills {
+  margin-top: 0.5em;
+}
+
+.cv-skill-category {
+  margin-bottom: 0.5em;
+  line-height: 1.5;
+}
+
+.cv-skill-category strong {
+  font-weight: bold;
+  margin-right: 0.5em;
+}
+
+/* Print styles */
+@media print {
+  .cv-template {
+    padding: 0;
+    margin: 0;
+  }
+
+  .cv-contact a,
+  .cv-project-url a,
+  .cv-cert-url a {
+    color: #000;
+  }
+
+  @page {
+    margin: 1.9cm;
+    size: letter;
+  }
+}

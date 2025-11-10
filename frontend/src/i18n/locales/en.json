@@ -118,6 +118,7 @@
     "preview": "CV Preview",
     "exportPDF": "Export PDF",
     "exportDOCX": "Export DOCX",
+    "print": "Print",
     "generating": "Generating CV...",
     "downloadSuccess": "CV downloaded successfully"
   },
