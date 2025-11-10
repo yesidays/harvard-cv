@@ -1,0 +1,163 @@
+{
+  "info": {
+    "name": "Harvard CV Generator API",
+    "description": "Collection for testing Harvard CV Generator API endpoints",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8000/api/v1",
+      "type": "string"
+    },
+    {
+      "key": "token",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Signup",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"test@example.com\",\n  \"password\": \"password123\"\n}"
+            },
+            "url": {"raw": "{{baseUrl}}/auth/signup"}
+          }
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"demo@example.com\",\n  \"password\": \"demo123\"\n}"
+            },
+            "url": {"raw": "{{baseUrl}}/auth/login"}
+          }
+        }
+      ]
+    },
+    {
+      "name": "Profile",
+      "item": [
+        {
+          "name": "Get Profile",
+          "request": {
+            "method": "GET",
+            "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": {"raw": "{{baseUrl}}/profile"}
+          }
+        },
+        {
+          "name": "Create Profile",
+          "request": {
+            "method": "POST",
+            "header": [
+              {"key": "Content-Type", "value": "application/json"},
+              {"key": "Authorization", "value": "Bearer {{token}}"}
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"first_name\": \"John\",\n  \"last_name\": \"Doe\",\n  \"email\": \"john@example.com\",\n  \"phone\": \"+1234567890\",\n  \"location\": \"New York, USA\",\n  \"linkedin\": \"linkedin.com/in/johndoe\",\n  \"summary\": \"Experienced software engineer...\"\n}"
+            },
+            "url": {"raw": "{{baseUrl}}/profile"}
+          }
+        }
+      ]
+    },
+    {
+      "name": "Education",
+      "item": [
+        {
+          "name": "Get All Education",
+          "request": {
+            "method": "GET",
+            "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": {"raw": "{{baseUrl}}/education"}
+          }
+        },
+        {
+          "name": "Create Education",
+          "request": {
+            "method": "POST",
+            "header": [
+              {"key": "Content-Type", "value": "application/json"},
+              {"key": "Authorization", "value": "Bearer {{token}}"}
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"degree\": \"Bachelor of Computer Science\",\n  \"institution\": \"MIT\",\n  \"location\": \"Cambridge, MA\",\n  \"start_date\": \"2015-09\",\n  \"end_date\": \"2019-06\",\n  \"details\": [\"GPA: 3.9/4.0\", \"Dean's List\"]\n}"
+            },
+            "url": {"raw": "{{baseUrl}}/education"}
+          }
+        }
+      ]
+    },
+    {
+      "name": "Experience",
+      "item": [
+        {
+          "name": "Get All Experience",
+          "request": {
+            "method": "GET",
+            "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": {"raw": "{{baseUrl}}/experience"}
+          }
+        },
+        {
+          "name": "Create Experience",
+          "request": {
+            "method": "POST",
+            "header": [
+              {"key": "Content-Type", "value": "application/json"},
+              {"key": "Authorization", "value": "Bearer {{token}}"}
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"company\": \"Google\",\n  \"role\": \"Software Engineer\",\n  \"location\": \"Mountain View, CA\",\n  \"start_date\": \"2019-07\",\n  \"end_date\": null,\n  \"bullets\": [\n    \"Improved system performance by 40%\",\n    \"Led team of 5 engineers\"\n  ]\n}"
+            },
+            "url": {"raw": "{{baseUrl}}/experience"}
+          }
+        }
+      ]
+    },
+    {
+      "name": "CV Export",
+      "item": [
+        {
+          "name": "Preview CV",
+          "request": {
+            "method": "GET",
+            "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": {"raw": "{{baseUrl}}/cv/preview"}
+          }
+        },
+        {
+          "name": "Export PDF",
+          "request": {
+            "method": "GET",
+            "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": {"raw": "{{baseUrl}}/cv/export/pdf"}
+          }
+        },
+        {
+          "name": "Export DOCX",
+          "request": {
+            "method": "GET",
+            "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": {"raw": "{{baseUrl}}/cv/export/docx"}
+          }
+        }
+      ]
+    }
+  ]
+}

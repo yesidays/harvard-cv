@@ -1,0 +1,124 @@
+.dashboard {
+  min-height: 100vh;
+  background-color: var(--color-background-alt);
+}
+
+.dashboard-nav {
+  background-color: var(--color-background);
+  border-bottom: 1px solid var(--color-border);
+  padding: var(--spacing-lg) 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-title {
+  font-size: 1.5rem;
+  font-family: var(--font-serif);
+  margin: 0;
+}
+
+.nav-actions {
+  display: flex;
+  gap: var(--spacing-md);
+}
+
+.dashboard-container {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  gap: var(--spacing-xl);
+  padding-top: var(--spacing-xl);
+  padding-bottom: var(--spacing-2xl);
+}
+
+.dashboard-sidebar {
+  position: sticky;
+  top: calc(80px + var(--spacing-xl));
+  height: fit-content;
+}
+
+.section-nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.section-nav-item {
+  background: none;
+  border: none;
+  padding: var(--spacing-md);
+  text-align: left;
+  font-size: 1rem;
+  color: var(--color-text);
+  cursor: pointer;
+  border-radius: var(--radius-md);
+  transition: background-color 0.2s;
+}
+
+.section-nav-item:hover {
+  background-color: var(--color-background-alt);
+}
+
+.section-nav-item.active {
+  background-color: var(--color-primary);
+  color: white;
+  font-weight: 500;
+}
+
+.dashboard-main {
+  min-height: 500px;
+}
+
+.section-content {
+  background-color: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-2xl);
+  box-shadow: var(--shadow-sm);
+}
+
+.section-header {
+  margin-bottom: var(--spacing-xl);
+}
+
+.section-header h2 {
+  margin-bottom: var(--spacing-sm);
+}
+
+.section-header p {
+  color: var(--color-text-light);
+  margin: 0;
+}
+
+.section-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-lg);
+}
+
+@media (max-width: 968px) {
+  .dashboard-container {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-sidebar {
+    position: static;
+  }
+
+  .section-nav {
+    flex-direction: row;
+    overflow-x: auto;
+    padding-bottom: var(--spacing-sm);
+  }
+
+  .section-nav-item {
+    white-space: nowrap;
+  }
+}

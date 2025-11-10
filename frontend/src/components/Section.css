@@ -1,0 +1,66 @@
+.items-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-xl);
+}
+
+.item-card {
+  padding: var(--spacing-lg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-background-alt);
+}
+
+.item-card h3 {
+  margin-bottom: var(--spacing-sm);
+}
+
+.item-card ul {
+  margin-left: var(--spacing-lg);
+  margin-top: var(--spacing-sm);
+}
+
+.item-card li {
+  margin-bottom: var(--spacing-xs);
+}
+
+.item-actions {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-md);
+}
+
+.item-form {
+  margin-top: var(--spacing-xl);
+  padding-top: var(--spacing-xl);
+  border-top: 2px solid var(--color-border);
+}
+
+.item-form h3 {
+  margin-bottom: var(--spacing-lg);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-md);
+}
+
+.message {
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+.message.success {
+  background-color: #d1fae5;
+  border: 1px solid var(--color-success);
+  color: var(--color-success);
+}
+
+.message.error {
+  background-color: #fee;
+  border: 1px solid var(--color-error);
+  color: var(--color-error);
+}

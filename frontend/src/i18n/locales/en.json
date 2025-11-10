@@ -1,0 +1,136 @@
+{
+  "app": {
+    "title": "Harvard CV Generator",
+    "tagline": "Create your professional resume in Harvard format"
+  },
+  "nav": {
+    "home": "Home",
+    "dashboard": "Dashboard",
+    "preview": "Preview",
+    "logout": "Logout"
+  },
+  "auth": {
+    "login": "Login",
+    "signup": "Sign Up",
+    "email": "Email",
+    "password": "Password",
+    "loginButton": "Log In",
+    "signupButton": "Create Account",
+    "noAccount": "Don't have an account?",
+    "hasAccount": "Already have an account?",
+    "loginError": "Login error",
+    "signupError": "Signup error"
+  },
+  "home": {
+    "welcome": "Generate Your Harvard CV",
+    "description": "Create a professional resume following the Harvard format: clear, structured, and impact-oriented.",
+    "cta": "Create My CV",
+    "features": {
+      "title": "Why Harvard Format?",
+      "professional": {
+        "title": "Professional",
+        "description": "Widely recognized format valued by recruiters"
+      },
+      "structured": {
+        "title": "Structured",
+        "description": "Clear organization with emphasis on measurable achievements"
+      },
+      "export": {
+        "title": "Multiple Formats",
+        "description": "Export in PDF and DOCX with perfect formatting"
+      }
+    }
+  },
+  "profile": {
+    "title": "Personal Profile",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "email": "Email",
+    "phone": "Phone",
+    "location": "City / Country",
+    "linkedin": "LinkedIn",
+    "summary": "Professional Summary",
+    "summaryHint": "3-5 lines highlighting your profile and key strengths"
+  },
+  "education": {
+    "title": "Education",
+    "add": "Add Education",
+    "degree": "Degree",
+    "institution": "Institution",
+    "location": "Location",
+    "startDate": "Start Date",
+    "endDate": "End Date",
+    "current": "Current",
+    "details": "Achievements and Details",
+    "detailsHint": "Honors, thesis, GPA, etc. (one per line)"
+  },
+  "experience": {
+    "title": "Professional Experience",
+    "add": "Add Experience",
+    "company": "Company",
+    "role": "Role / Position",
+    "location": "Location",
+    "startDate": "Start Date",
+    "endDate": "End Date",
+    "current": "Current Position",
+    "bullets": "Achievements and Impact",
+    "bulletsHint": "4-6 bullets with metrics and results. Example: 'Increased sales by 25% by implementing new digital strategy'",
+    "bulletPlaceholder": "Describe your achievement with metrics..."
+  },
+  "certifications": {
+    "title": "Certifications",
+    "add": "Add Certification",
+    "name": "Certification Name",
+    "issuer": "Issuer",
+    "date": "Date",
+    "credentialId": "Credential ID",
+    "url": "URL"
+  },
+  "projects": {
+    "title": "Projects",
+    "add": "Add Project",
+    "name": "Project Name",
+    "impact": "Impact and Description",
+    "technologies": "Technologies",
+    "technologiesHint": "Comma-separated",
+    "url": "URL"
+  },
+  "skills": {
+    "title": "Skills",
+    "languages": "Programming Languages",
+    "tools": "Tools",
+    "methods": "Methodologies",
+    "hint": "Comma-separated"
+  },
+  "actions": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "add": "Add",
+    "back": "Back",
+    "next": "Next",
+    "preview": "Preview",
+    "export": "Export",
+    "download": "Download"
+  },
+  "cv": {
+    "preview": "CV Preview",
+    "exportPDF": "Export PDF",
+    "exportDOCX": "Export DOCX",
+    "generating": "Generating CV...",
+    "downloadSuccess": "CV downloaded successfully"
+  },
+  "validation": {
+    "required": "This field is required",
+    "email": "Invalid email",
+    "minLength": "Minimum {{min}} characters",
+    "maxLength": "Maximum {{max}} characters"
+  },
+  "messages": {
+    "saved": "Saved successfully",
+    "deleted": "Deleted successfully",
+    "error": "An error occurred",
+    "loading": "Loading..."
+  }
+}

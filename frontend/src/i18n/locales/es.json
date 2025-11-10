@@ -1,0 +1,136 @@
+{
+  "app": {
+    "title": "Generador de CV Harvard",
+    "tagline": "Crea tu currículum profesional en formato Harvard"
+  },
+  "nav": {
+    "home": "Inicio",
+    "dashboard": "Panel",
+    "preview": "Vista Previa",
+    "logout": "Cerrar Sesión"
+  },
+  "auth": {
+    "login": "Iniciar Sesión",
+    "signup": "Registrarse",
+    "email": "Correo electrónico",
+    "password": "Contraseña",
+    "loginButton": "Entrar",
+    "signupButton": "Crear cuenta",
+    "noAccount": "¿No tienes cuenta?",
+    "hasAccount": "¿Ya tienes cuenta?",
+    "loginError": "Error al iniciar sesión",
+    "signupError": "Error al registrarse"
+  },
+  "home": {
+    "welcome": "Genera tu CV Harvard",
+    "description": "Crea un currículum profesional siguiendo el formato Harvard: claro, estructurado y orientado a impacto.",
+    "cta": "Crear mi CV",
+    "features": {
+      "title": "¿Por qué el formato Harvard?",
+      "professional": {
+        "title": "Profesional",
+        "description": "Formato ampliamente reconocido y valorado por reclutadores"
+      },
+      "structured": {
+        "title": "Estructurado",
+        "description": "Organización clara con énfasis en logros medibles"
+      },
+      "export": {
+        "title": "Múltiples formatos",
+        "description": "Exporta en PDF y DOCX con formato perfecto"
+      }
+    }
+  },
+  "profile": {
+    "title": "Perfil Personal",
+    "firstName": "Nombre",
+    "lastName": "Apellido",
+    "email": "Correo electrónico",
+    "phone": "Teléfono",
+    "location": "Ciudad / País",
+    "linkedin": "LinkedIn",
+    "summary": "Resumen profesional",
+    "summaryHint": "3-5 líneas destacando tu perfil y fortalezas clave"
+  },
+  "education": {
+    "title": "Educación",
+    "add": "Añadir Educación",
+    "degree": "Título / Grado",
+    "institution": "Institución",
+    "location": "Ubicación",
+    "startDate": "Fecha inicio",
+    "endDate": "Fecha fin",
+    "current": "Actual",
+    "details": "Logros y detalles",
+    "detailsHint": "Honores, tesis, GPA, etc. (uno por línea)"
+  },
+  "experience": {
+    "title": "Experiencia Profesional",
+    "add": "Añadir Experiencia",
+    "company": "Empresa",
+    "role": "Cargo / Rol",
+    "location": "Ubicación",
+    "startDate": "Fecha inicio",
+    "endDate": "Fecha fin",
+    "current": "Trabajo actual",
+    "bullets": "Logros e impacto",
+    "bulletsHint": "4-6 bullets con métricas y resultados. Ejemplo: 'Incrementé las ventas en 25% implementando nueva estrategia digital'",
+    "bulletPlaceholder": "Describe tu logro con métricas..."
+  },
+  "certifications": {
+    "title": "Certificaciones",
+    "add": "Añadir Certificación",
+    "name": "Nombre de la certificación",
+    "issuer": "Emisor",
+    "date": "Fecha",
+    "credentialId": "ID de credencial",
+    "url": "URL"
+  },
+  "projects": {
+    "title": "Proyectos",
+    "add": "Añadir Proyecto",
+    "name": "Nombre del proyecto",
+    "impact": "Impacto y descripción",
+    "technologies": "Tecnologías",
+    "technologiesHint": "Separadas por comas",
+    "url": "URL"
+  },
+  "skills": {
+    "title": "Habilidades",
+    "languages": "Lenguajes de programación",
+    "tools": "Herramientas",
+    "methods": "Metodologías",
+    "hint": "Separadas por comas"
+  },
+  "actions": {
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "add": "Añadir",
+    "back": "Volver",
+    "next": "Siguiente",
+    "preview": "Vista Previa",
+    "export": "Exportar",
+    "download": "Descargar"
+  },
+  "cv": {
+    "preview": "Vista Previa del CV",
+    "exportPDF": "Exportar PDF",
+    "exportDOCX": "Exportar DOCX",
+    "generating": "Generando CV...",
+    "downloadSuccess": "CV descargado exitosamente"
+  },
+  "validation": {
+    "required": "Este campo es obligatorio",
+    "email": "Correo electrónico inválido",
+    "minLength": "Mínimo {{min}} caracteres",
+    "maxLength": "Máximo {{max}} caracteres"
+  },
+  "messages": {
+    "saved": "Guardado exitosamente",
+    "deleted": "Eliminado exitosamente",
+    "error": "Ocurrió un error",
+    "loading": "Cargando..."
+  }
+}
