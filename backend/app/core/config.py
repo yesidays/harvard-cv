@@ -17,7 +17,7 @@ class Settings(BaseSettings):
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24 * 7  # 7 days
 
     # Database
-    DATABASE_URL: str = "postgresql://cvuser:cvpassword@localhost:5432/harvard_cv"
+    DATABASE_URL: str = "sqlite:///./harvard_cv.db"
 
     # File Upload
     MAX_FILE_SIZE: int = 5 * 1024 * 1024  # 5 MB
