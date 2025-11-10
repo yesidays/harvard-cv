@@ -57,9 +57,46 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const logout = () => {
-    localStorage.removeItem('token');
-    setUser(null);
+  const logout = async () => {
+    try {
+      await authAPI.logout();
+    } catch (error) {
+      // Even if the API call fails, we still clear the local token
+      console.error('Logout error:', error);
+    } finally {
+      localStorage.removeItem('token');
+      setUser(null);
+    }
+  };
+
+  const requestPasswordReset = async (email) => {
+    try {
+      const response = await authAPI.requestPasswordReset(email);
+      return {
+        success: true,
+        message: response.data.message,
+      };
+    } catch (error) {
+      return {
+        success: false,
+        error: error.response?.data?.detail || 'Failed to request password reset',
+      };
+    }
+  };
+
+  const resetPassword = async (token, newPassword) => {
+    try {
+      const response = await authAPI.resetPassword(token, newPassword);
+      return {
+        success: true,
+        message: response.data.message,
+      };
+    } catch (error) {
+      return {
+        success: false,
+        error: error.response?.data?.detail || 'Failed to reset password',
+      };
+    }
   };
 
   const value = {
@@ -68,6 +105,8 @@ export const AuthProvider = ({ children }) => {
     login,
     signup,
     logout,
+    requestPasswordReset,
+    resetPassword,
     isAuthenticated: !!user,
   };
 

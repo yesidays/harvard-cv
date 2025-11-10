@@ -1,5 +1,5 @@
 """Pydantic schemas."""
-from .auth import UserCreate, UserLogin, Token, TokenPayload
+from .auth import UserCreate, UserLogin, Token, TokenPayload, PasswordResetRequest, PasswordReset, Message
 from .cv import (
     ProfileCreate,
     ProfileUpdate,
@@ -22,6 +22,9 @@ __all__ = [
     "UserLogin",
     "Token",
     "TokenPayload",
+    "PasswordResetRequest",
+    "PasswordReset",
+    "Message",
     "ProfileCreate",
     "ProfileUpdate",
     "ProfileResponse",

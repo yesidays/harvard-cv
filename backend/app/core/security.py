@@ -3,6 +3,7 @@ from datetime import datetime, timedelta
 from typing import Optional
 from jose import JWTError, jwt
 import bcrypt
+import secrets
 from .config import settings
 
 
@@ -42,3 +43,8 @@ def decode_access_token(token: str) -> Optional[dict]:
         return payload
     except JWTError:
         return None
+
+
+def generate_reset_token() -> str:
+    """Generate a secure random token for password reset."""
+    return secrets.token_urlsafe(32)
