@@ -191,6 +191,7 @@ export default function Preview() {
 
           // Bullets
           if (exp.bullets && exp.bullets.length > 0) {
+            pdf.setFontSize(9);
             pdf.setFont('helvetica', 'normal');
             exp.bullets.forEach((bullet) => {
               checkNewPage();
