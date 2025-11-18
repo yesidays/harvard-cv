@@ -1,6 +1,6 @@
 """CV data endpoints for frontend rendering."""
 from fastapi import APIRouter, Depends, HTTPException, status
-from sqlalchemy.orm import Session
+from sqlalchemy.orm import Session, joinedload
 from ..core.database import get_db
 from ..models import User, Profile
 from .dependencies import get_current_user
@@ -10,7 +10,20 @@ router = APIRouter(prefix="/cv", tags=["cv-data"])
 
 def get_user_cv_data(user: User, db: Session) -> dict:
     """Get complete CV data for user."""
-    profile = db.query(Profile).filter(Profile.user_id == user.id).first()
+    # Eager load all relationships to avoid lazy loading issues
+    profile = (
+        db.query(Profile)
+        .options(
+            joinedload(Profile.education),
+            joinedload(Profile.experience),
+            joinedload(Profile.certifications),
+            joinedload(Profile.projects),
+            joinedload(Profile.skills),
+        )
+        .filter(Profile.user_id == user.id)
+        .first()
+    )
+
     if not profile:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
