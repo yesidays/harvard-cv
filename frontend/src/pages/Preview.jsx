@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import html2pdf from 'html2pdf.js';
 import { cvAPI } from '../services/api';
+import { exportToGoogleDocs } from '../services/googleOAuth';
 import CVTemplate from '../components/CVTemplate';
 import './Preview.css';
 
@@ -15,6 +16,7 @@ export default function Preview() {
   const [cvData, setCvData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [exporting, setExporting] = useState(false);
+  const [exportingToDocs, setExportingToDocs] = useState(false);
   const cvRef = useRef(null);
 
   useEffect(() => {
@@ -45,18 +47,30 @@ export default function Preview() {
         : 'CV_Harvard.pdf';
 
       const opt = {
-        margin: 0,
+        margin: [0.5, 0.5, 0.5, 0.5], // top, left, bottom, right in inches
         filename: fileName,
-        image: { type: 'jpeg', quality: 0.98 },
+        image: {
+          type: 'jpeg',
+          quality: 1.0 // Maximum quality
+        },
         html2canvas: {
-          scale: 2,
+          scale: 3, // Higher scale for better quality
           useCORS: true,
-          letterRendering: true
+          letterRendering: true,
+          logging: false,
+          backgroundColor: '#ffffff',
+          windowWidth: 816, // 8.5 inches at 96 DPI
+          windowHeight: 1056 // 11 inches at 96 DPI
         },
         jsPDF: {
           unit: 'in',
           format: 'letter',
-          orientation: 'portrait'
+          orientation: 'portrait',
+          compress: true
+        },
+        pagebreak: {
+          mode: ['avoid-all', 'css', 'legacy'],
+          before: '.cv-section'
         }
       };
 
@@ -72,6 +86,42 @@ export default function Preview() {
 
   const handlePrint = () => {
     window.print();
+  };
+
+  const handleExportToGoogleDocs = async () => {
+    setExportingToDocs(true);
+    try {
+      const result = await exportToGoogleDocs();
+
+      if (result.success && result.document_url) {
+        // Show success message with link
+        const openDoc = window.confirm(
+          t('cv.googleDocsSuccess') + '\n\n' + t('cv.openDocument')
+        );
+
+        if (openDoc) {
+          window.open(result.document_url, '_blank');
+        }
+      } else {
+        throw new Error('Export failed');
+      }
+    } catch (error) {
+      console.error('Google Docs export error:', error);
+
+      let errorMessage = t('messages.error');
+      if (error.message.includes('not configured')) {
+        errorMessage = t('cv.googleDocsNotConfigured');
+      } else if (error.message.includes('expired')) {
+        errorMessage = t('cv.googleDocsAuthExpired');
+      } else if (error.message.includes('cancelled')) {
+        // User cancelled auth, don't show error
+        return;
+      }
+
+      alert(errorMessage);
+    } finally {
+      setExportingToDocs(false);
+    }
   };
 
   if (loading) {
@@ -95,14 +145,22 @@ export default function Preview() {
               <button
                 className="btn btn-primary"
                 onClick={handleExportPDF}
-                disabled={exporting}
+                disabled={exporting || exportingToDocs}
               >
                 {exporting ? t('cv.generating') : t('cv.exportPDF')}
               </button>
               <button
+                className="btn btn-primary"
+                onClick={handleExportToGoogleDocs}
+                disabled={exporting || exportingToDocs}
+                title={t('cv.exportToGoogleDocs')}
+              >
+                {exportingToDocs ? t('cv.exportingToDocs') : t('cv.exportGoogleDocs')}
+              </button>
+              <button
                 className="btn btn-secondary"
                 onClick={handlePrint}
-                disabled={exporting}
+                disabled={exporting || exportingToDocs}
               >
                 {t('cv.print')}
               </button>
