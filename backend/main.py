@@ -3,7 +3,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.core.config import settings
 from app.core.database import Base, engine
-from app.api import auth, profile, cv_data, cv_export
+from app.api import auth, profile, cv_data, cv_export, google_oauth
 
 # Create database tables
 Base.metadata.create_all(bind=engine)
@@ -29,6 +29,7 @@ app.include_router(auth.router, prefix=settings.API_V1_STR)
 app.include_router(profile.router, prefix=settings.API_V1_STR)
 app.include_router(cv_data.router, prefix=settings.API_V1_STR)
 app.include_router(cv_export.router, prefix=settings.API_V1_STR)
+app.include_router(google_oauth.router, prefix=settings.API_V1_STR, tags=["google"])
 
 
 @app.get("/")

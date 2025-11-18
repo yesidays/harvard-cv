@@ -130,6 +130,13 @@
     "preview": "CV Preview",
     "exportPDF": "Export PDF",
     "exportDOCX": "Export DOCX",
+    "exportGoogleDocs": "Export to Google Docs",
+    "exportToGoogleDocs": "Export to Google Docs",
+    "exportingToDocs": "Exporting to Google Docs...",
+    "googleDocsSuccess": "CV exported successfully to Google Docs!",
+    "openDocument": "Do you want to open the document?",
+    "googleDocsNotConfigured": "Google Docs export is not configured. Please contact the administrator.",
+    "googleDocsAuthExpired": "Google authentication has expired. Please try again.",
     "print": "Print",
     "generating": "Generating CV...",
     "downloadSuccess": "CV downloaded successfully"

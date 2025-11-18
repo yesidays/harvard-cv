@@ -30,6 +30,15 @@ class Settings(BaseSettings):
     # Templates
     TEMPLATES_DIR: str = "./app/templates"
 
+    # Google OAuth & Docs
+    GOOGLE_CLIENT_ID: Optional[str] = None
+    GOOGLE_CLIENT_SECRET: Optional[str] = None
+    GOOGLE_REDIRECT_URI: str = "http://localhost:5173/auth/google/callback"
+    GOOGLE_SCOPES: list = [
+        "https://www.googleapis.com/auth/documents",
+        "https://www.googleapis.com/auth/drive.file"
+    ]
+
     class Config:
         env_file = ".env"
         case_sensitive = True
