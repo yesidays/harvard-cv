@@ -4,12 +4,15 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { educationAPI } from '../services/api';
+import DatePicker from './DatePicker';
+import { formatDateRange, calculateDuration } from '../utils/dateUtils';
 import './Section.css';
 
 export default function EducationSection() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [items, setItems] = useState([]);
   const [editing, setEditing] = useState(null);
+  const [isCurrentlyStudying, setIsCurrentlyStudying] = useState(false);
   const [formData, setFormData] = useState({
     degree: '',
     institution: '',
@@ -56,6 +59,7 @@ export default function EducationSection() {
 
   const resetForm = () => {
     setEditing(null);
+    setIsCurrentlyStudying(false);
     setFormData({
       degree: '',
       institution: '',
@@ -78,11 +82,18 @@ export default function EducationSection() {
             <h3>{item.institution}</h3>
             <p><strong>{item.degree}</strong></p>
             <p className="text-muted">
-              {item.location} | {item.start_date} - {item.end_date || t('education.current')}
+              {item.location && <>{item.location} | </>}
+              {formatDateRange(item.start_date, item.end_date, i18n.language, t('education.current'))}
             </p>
+            {item.start_date && (
+              <p className="text-muted" style={{ fontSize: '0.9rem', marginTop: '0.25rem' }}>
+                {t('dateRange.duration')}: {calculateDuration(item.start_date, item.end_date, i18n.language)}
+              </p>
+            )}
             <div className="item-actions">
               <button className="btn btn-secondary" onClick={() => {
                 setEditing(item.id);
+                setIsCurrentlyStudying(!item.end_date);
                 setFormData(item);
               }}>
                 {t('actions.edit')}
@@ -118,35 +129,33 @@ export default function EducationSection() {
           />
         </div>
 
+        <div className="form-group">
+          <label className="form-label">{t('education.location')}</label>
+          <input
+            className="form-input"
+            value={formData.location}
+            onChange={(e) => setFormData({...formData, location: e.target.value})}
+            placeholder={t('education.location')}
+          />
+        </div>
+
         <div className="form-row">
-          <div className="form-group">
-            <label className="form-label">{t('education.location')}</label>
-            <input
-              className="form-input"
-              value={formData.location}
-              onChange={(e) => setFormData({...formData, location: e.target.value})}
-            />
-          </div>
+          <DatePicker
+            label={t('education.startDate')}
+            value={formData.start_date}
+            onChange={(value) => setFormData({...formData, start_date: value})}
+            required={false}
+          />
 
-          <div className="form-group">
-            <label className="form-label">{t('education.startDate')}</label>
-            <input
-              type="month"
-              className="form-input"
-              value={formData.start_date}
-              onChange={(e) => setFormData({...formData, start_date: e.target.value})}
-            />
-          </div>
-
-          <div className="form-group">
-            <label className="form-label">{t('education.endDate')}</label>
-            <input
-              type="month"
-              className="form-input"
-              value={formData.end_date}
-              onChange={(e) => setFormData({...formData, end_date: e.target.value})}
-            />
-          </div>
+          <DatePicker
+            label={t('education.endDate')}
+            value={formData.end_date}
+            onChange={(value) => setFormData({...formData, end_date: value})}
+            allowPresent={true}
+            isPresent={isCurrentlyStudying}
+            onPresentChange={setIsCurrentlyStudying}
+            startDate={formData.start_date}
+          />
         </div>
 
         <div className="section-actions">

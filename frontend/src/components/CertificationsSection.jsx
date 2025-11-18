@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { certificationsAPI } from '../services/api';
+import DatePicker from './DatePicker';
+import { formatDate } from '../utils/dateUtils';
 
 export default function CertificationsSection() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [items, setItems] = useState([]);
   const [formData, setFormData] = useState({ name: '', issuer: '', date: '', credential_id: '', url: '' });
 
@@ -28,8 +30,18 @@ export default function CertificationsSection() {
         {items.map(item => (
           <div key={item.id} className="item-card">
             <h3>{item.name}</h3>
-            <p><strong>{item.issuer}</strong> | {item.date}</p>
+            <p>
+              <strong>{item.issuer}</strong>
+              {item.date && <> | {formatDate(item.date, i18n.language, 'long')}</>}
+            </p>
             {item.credential_id && <p className="text-muted">ID: {item.credential_id}</p>}
+            {item.url && (
+              <p>
+                <a href={item.url} target="_blank" rel="noopener noreferrer" className="text-muted" style={{ fontSize: '0.9rem' }}>
+                  Ver credencial →
+                </a>
+              </p>
+            )}
             <button className="btn btn-secondary" onClick={async () => { await certificationsAPI.delete(item.id); loadItems(); }}>
               {t('actions.delete')}
             </button>
@@ -47,18 +59,32 @@ export default function CertificationsSection() {
           <input className="form-input" value={formData.issuer} onChange={e => setFormData({...formData, issuer: e.target.value})} required />
         </div>
         <div className="form-row">
-          <div className="form-group">
-            <label className="form-label">{t('certifications.date')}</label>
-            <input type="month" className="form-input" value={formData.date} onChange={e => setFormData({...formData, date: e.target.value})} />
-          </div>
+          <DatePicker
+            label={t('certifications.date')}
+            value={formData.date}
+            onChange={(value) => setFormData({...formData, date: value})}
+            required={false}
+          />
           <div className="form-group">
             <label className="form-label">{t('certifications.credentialId')}</label>
-            <input className="form-input" value={formData.credential_id} onChange={e => setFormData({...formData, credential_id: e.target.value})} />
+            <input
+              className="form-input"
+              value={formData.credential_id}
+              onChange={e => setFormData({...formData, credential_id: e.target.value})}
+              placeholder={t('certifications.credentialId')}
+            />
           </div>
         </div>
         <div className="form-group">
           <label className="form-label">{t('certifications.url')}</label>
-          <input type="url" className="form-input" value={formData.url} onChange={e => setFormData({...formData, url: e.target.value})} />
+          <input
+            type="url"
+            className="form-input"
+            value={formData.url}
+            onChange={e => setFormData({...formData, url: e.target.value})}
+            placeholder="https://..."
+          />
+          <span className="form-hint">URL de la credencial o certificado</span>
         </div>
         <div className="section-actions">
           <button type="submit" className="btn btn-primary">{t('actions.save')}</button>
