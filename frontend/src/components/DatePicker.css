@@ -1,0 +1,92 @@
+.date-picker {
+  margin-bottom: var(--spacing-lg);
+}
+
+.date-picker-present {
+  margin-bottom: var(--spacing-md);
+  animation: fadeInDown 0.3s ease-out;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  cursor: pointer;
+  user-select: none;
+  padding: var(--spacing-sm);
+  border-radius: var(--radius-md);
+  transition: background-color 0.2s ease;
+}
+
+.checkbox-label:hover {
+  background-color: rgba(13, 59, 102, 0.05);
+}
+
+.checkbox-input {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: var(--color-primary);
+  border-radius: var(--radius-sm);
+}
+
+.checkbox-text {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.date-picker-inputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-md);
+  animation: fadeIn 0.3s ease-out;
+}
+
+.date-picker-select-wrapper {
+  position: relative;
+}
+
+.date-picker-select {
+  width: 100%;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%230d3b66' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right var(--spacing-md) center;
+  padding-right: var(--spacing-2xl);
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.date-picker-select:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: var(--color-background-alt);
+}
+
+.date-picker-select.has-error {
+  border-color: var(--color-error);
+  background-color: rgba(249, 87, 56, 0.05);
+}
+
+.date-picker-select.has-error:focus {
+  border-color: var(--color-error);
+  box-shadow: 0 0 0 4px rgba(249, 87, 56, 0.1);
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .date-picker-inputs {
+    grid-template-columns: 1fr;
+  }
+}

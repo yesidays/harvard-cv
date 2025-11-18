@@ -138,7 +138,14 @@
     "required": "This field is required",
     "email": "Invalid email",
     "minLength": "Minimum {{min}} characters",
-    "maxLength": "Maximum {{max}} characters"
+    "maxLength": "Maximum {{max}} characters",
+    "endDateBeforeStart": "End date must be after start date"
+  },
+  "dateRange": {
+    "present": "Present / Current",
+    "selectMonth": "Select month",
+    "selectYear": "Select year",
+    "duration": "Duration"
   },
   "messages": {
     "saved": "Saved successfully",

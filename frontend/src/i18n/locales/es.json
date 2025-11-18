@@ -138,7 +138,14 @@
     "required": "Este campo es obligatorio",
     "email": "Correo electrónico inválido",
     "minLength": "Mínimo {{min}} caracteres",
-    "maxLength": "Máximo {{max}} caracteres"
+    "maxLength": "Máximo {{max}} caracteres",
+    "endDateBeforeStart": "La fecha de fin debe ser posterior a la de inicio"
+  },
+  "dateRange": {
+    "present": "Actual / Presente",
+    "selectMonth": "Seleccionar mes",
+    "selectYear": "Seleccionar año",
+    "duration": "Duración"
   },
   "messages": {
     "saved": "Guardado exitosamente",
