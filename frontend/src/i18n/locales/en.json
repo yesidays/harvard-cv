@@ -150,6 +150,8 @@
   },
   "dateRange": {
     "present": "Present / Current",
+    "month": "Month",
+    "year": "Year",
     "selectMonth": "Select month",
     "selectYear": "Select year",
     "duration": "Duration"

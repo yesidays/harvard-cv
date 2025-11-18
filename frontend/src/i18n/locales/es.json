@@ -150,6 +150,8 @@
   },
   "dateRange": {
     "present": "Actual / Presente",
+    "month": "Mes",
+    "year": "Año",
     "selectMonth": "Seleccionar mes",
     "selectYear": "Seleccionar año",
     "duration": "Duración"

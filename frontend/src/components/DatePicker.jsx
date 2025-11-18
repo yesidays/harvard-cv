@@ -1,9 +1,9 @@
 /**
- * Enhanced DatePicker component with validation and present/current option
+ * Enhanced DatePicker component with easy year selection
  */
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { getMonthOptions, getYearOptions, parseDate, validateDateRange } from '../utils/dateUtils';
+import { getMonthOptions, getYearOptions, validateDateRange } from '../utils/dateUtils';
 import './DatePicker.css';
 
 export default function DatePicker({
@@ -27,9 +27,9 @@ export default function DatePicker({
   // Parse initial value
   useEffect(() => {
     if (value && !isPresent) {
-      const parsed = parseDate(value);
-      if (parsed.month) setMonth(String(parsed.month).padStart(2, '0'));
-      if (parsed.year) setYear(String(parsed.year));
+      const [y, m] = value.split('-');
+      if (m) setMonth(m);
+      if (y) setYear(y);
     } else if (isPresent) {
       setMonth('');
       setYear('');
@@ -72,64 +72,68 @@ export default function DatePicker({
   const yearOptions = getYearOptions();
 
   return (
-    <div className="date-picker">
+    <div className="date-picker-wrapper">
       <label className={`form-label ${required ? 'form-label-required' : ''}`}>
         {label}
       </label>
 
-      {allowPresent && (
-        <div className="date-picker-present">
-          <label className="checkbox-label">
-            <input
-              type="checkbox"
-              checked={isPresent}
-              onChange={handlePresentToggle}
-              className="checkbox-input"
-            />
-            <span className="checkbox-text">
-              {t('dateRange.present')}
-            </span>
-          </label>
-        </div>
-      )}
+      <div className="date-picker-content">
+        {!isPresent && (
+          <div className="date-picker-selects">
+            <div className="date-picker-select-group">
+              <label className="date-picker-sublabel">{t('dateRange.month')}</label>
+              <select
+                className={`form-select date-picker-select ${validationError || error ? 'has-error' : ''}`}
+                value={month}
+                onChange={(e) => setMonth(e.target.value)}
+                disabled={isPresent}
+                required={required && !isPresent}
+              >
+                <option value="">{t('dateRange.selectMonth')}</option>
+                {monthOptions.map(opt => (
+                  <option key={opt.value} value={opt.value}>
+                    {opt.label}
+                  </option>
+                ))}
+              </select>
+            </div>
 
-      {!isPresent && (
-        <div className="date-picker-inputs">
-          <div className="date-picker-select-wrapper">
-            <select
-              className={`form-select date-picker-select ${validationError || error ? 'has-error' : ''}`}
-              value={month}
-              onChange={(e) => setMonth(e.target.value)}
-              disabled={isPresent}
-              required={required && !isPresent}
-            >
-              <option value="">{t('dateRange.selectMonth')}</option>
-              {monthOptions.map(opt => (
-                <option key={opt.value} value={opt.value}>
-                  {opt.label}
-                </option>
-              ))}
-            </select>
+            <div className="date-picker-select-group">
+              <label className="date-picker-sublabel">{t('dateRange.year')}</label>
+              <select
+                className={`form-select date-picker-select ${validationError || error ? 'has-error' : ''}`}
+                value={year}
+                onChange={(e) => setYear(e.target.value)}
+                disabled={isPresent}
+                required={required && !isPresent}
+              >
+                <option value="">{t('dateRange.selectYear')}</option>
+                {yearOptions.map(opt => (
+                  <option key={opt.value} value={opt.value}>
+                    {opt.label}
+                  </option>
+                ))}
+              </select>
+            </div>
           </div>
+        )}
 
-          <div className="date-picker-select-wrapper">
-            <select
-              className={`form-select date-picker-select ${validationError || error ? 'has-error' : ''}`}
-              value={year}
-              onChange={(e) => setYear(e.target.value)}
-              disabled={isPresent}
-              required={required && !isPresent}
-            >
-              <option value="">{t('dateRange.selectYear')}</option>
-              {yearOptions.map(opt => (
-                <option key={opt.value} value={opt.value}>
-                  {opt.label}
-                </option>
-              ))}
-            </select>
+        {allowPresent && (
+          <div className="date-picker-present">
+            <label className="checkbox-label">
+              <input
+                type="checkbox"
+                checked={isPresent}
+                onChange={handlePresentToggle}
+                className="checkbox-input"
+              />
+              <span className="checkbox-text">
+                {t('dateRange.present')}
+              </span>
+            </label>
           </div>
-        </div>
-      )}
+        )}
+      </div>
 
       {(validationError || error) && (
         <span className="form-error">{validationError || error}</span>
