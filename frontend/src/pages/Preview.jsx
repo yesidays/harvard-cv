@@ -45,18 +45,30 @@ export default function Preview() {
         : 'CV_Harvard.pdf';
 
       const opt = {
-        margin: 0,
+        margin: [0.5, 0.5, 0.5, 0.5], // top, left, bottom, right in inches
         filename: fileName,
-        image: { type: 'jpeg', quality: 0.98 },
+        image: {
+          type: 'jpeg',
+          quality: 1.0 // Maximum quality
+        },
         html2canvas: {
-          scale: 2,
+          scale: 3, // Higher scale for better quality
           useCORS: true,
-          letterRendering: true
+          letterRendering: true,
+          logging: false,
+          backgroundColor: '#ffffff',
+          windowWidth: 816, // 8.5 inches at 96 DPI
+          windowHeight: 1056 // 11 inches at 96 DPI
         },
         jsPDF: {
           unit: 'in',
           format: 'letter',
-          orientation: 'portrait'
+          orientation: 'portrait',
+          compress: true
+        },
+        pagebreak: {
+          mode: ['avoid-all', 'css', 'legacy'],
+          before: '.cv-section'
         }
       };
 

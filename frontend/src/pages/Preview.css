@@ -48,7 +48,7 @@
   border: none;
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-xl);
-  padding: 2cm;
+  padding: 0; /* Remove padding - CV template handles its own padding */
   max-width: 21cm;
   margin: 0 auto;
   position: relative;
@@ -64,6 +64,7 @@
   right: 0;
   height: 5px;
   background: var(--gradient-accent);
+  z-index: 1;
 }
 
 @keyframes fadeIn {
@@ -121,5 +122,9 @@
     box-shadow: none;
     padding: 0;
     max-width: 100%;
+  }
+
+  .preview-frame::before {
+    display: none; /* Hide decorative bar in print */
   }
 }

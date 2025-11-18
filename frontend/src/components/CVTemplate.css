@@ -6,7 +6,7 @@
 .cv-template {
   max-width: 8.5in;
   margin: 0 auto;
-  padding: 1.9cm;
+  padding: 0.75in;
   background: white;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 11pt;
@@ -33,7 +33,7 @@
 
 .cv-contact {
   font-size: 10pt;
-  color: #333;
+  color: #000;
 }
 
 .cv-contact a {
@@ -88,12 +88,12 @@
   white-space: nowrap;
   margin-left: 1em;
   font-style: italic;
-  color: #333;
+  color: #000;
 }
 
 .cv-location {
   font-weight: normal;
-  color: #333;
+  color: #000;
 }
 
 .cv-degree,
@@ -122,7 +122,7 @@
 .cv-technologies {
   margin: 0.3em 0;
   font-size: 10pt;
-  color: #333;
+  color: #000;
 }
 
 .cv-project-url {
@@ -142,7 +142,7 @@
 /* Certifications */
 .cv-credential {
   font-size: 10pt;
-  color: #555;
+  color: #000;
   margin: 0.2em 0;
 }
 
@@ -178,7 +178,7 @@
 /* Print styles */
 @media print {
   .cv-template {
-    padding: 0;
+    padding: 0.5in;
     margin: 0;
   }
 
@@ -189,7 +189,7 @@
   }
 
   @page {
-    margin: 1.9cm;
+    margin: 0.5in;
     size: letter;
   }
 }
